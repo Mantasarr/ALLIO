@@ -11,7 +11,6 @@ export class HomeComponent implements OnInit{
 
   ngOnInit(): void {
   }
-
   /*testClick(route: any){
     console.log(this.router);
     this.router.navigateByUrl(route);

@@ -73,7 +73,6 @@ import { ConnexionComponent } from './connexion/connexion.component';
     MatToolbarModule,
     MatSidenavModule
   ],
-
   exports: [
     //MatAutocompleteModule,
          MatButtonModule,
