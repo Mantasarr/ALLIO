@@ -71,8 +71,7 @@ import { ConnexionComponent } from './connexion/connexion.component';
     MatInputModule,
     MatButtonToggleModule,
     MatToolbarModule,
-    MatSidenavModule,
-    ConnexionComponent
+    MatSidenavModule
   ],
 
   exports: [
