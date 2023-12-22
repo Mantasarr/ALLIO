@@ -1,0 +1,108 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background: radial-gradient(circle, rgb(241, 151, 190) 0%, rgb(51, 137, 235) 100%);">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" style="font-weight: bold; color:white">Prospectus</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit" style="color:white">Rechercher</button>
+    </form>
+  </div>
+</nav>
+<div class="form-group pt-4" style="background-color: white;">
+  <button (click)="ajoutArticle(content)" class="btn btn-primary btn-block" type="submit" style="background: radial-gradient(circle, rgb(241, 151, 190) 0%, rgb(51, 137, 235) 100%); color:white">Diffuser un prospectus</button>
+  <button mat-button (click)="voirArticle()" class="btn btn-primary btn-block" type="submit" style="background: radial-gradient(circle, rgb(241, 151, 190) 0%, rgb(51, 137, 235) 100%); float: right; color:white">Voir les prospectus</button>
+
+  <div class="row" style="margin:5%">
+    <ng-container *ngFor="let articles of mesarticles; let i = index">
+      <div class="col-md-4">
+        <mat-card class="mb-3" style="background: radial-gradient(circle, rgb(241, 151, 190) 0%, rgb(51, 137, 235) 100%); height:80%; width:80%">
+          <mat-card-header>
+            <mat-card-title style="font-weight: bold; color:blueviolet">{{ articles.nomArticle}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content >
+            <p>{{ articles.image }}</p>
+            <div *ngIf="showDetails">
+              <p><strong>Age Ciblé:</strong> {{ articles.ageCible }}</p>
+              <p><strong>Sexe Ciblé:</strong> {{ articles.sexeCilbe }}</p>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <!-- Ajoutez ces liens dans le fichier où vous configurez les styles de votre application -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+            <button mat-icon-button (click)="SuppArticle(articles.id)">
+              <i class="fas fa-trash-alt"></i> <!-- Icône de suppression -->
+            </button>
+            <button mat-icon-button (click)="UpdateArticle(articles.id)">
+              <i class="fas fa-edit"></i> <!-- Icône de modification -->
+            </button>
+            <button mat-button (click)="toggleDetails()" class="btn btn-secondary btn-block" type="button" style="background-color:fuchsia;">
+              {{ showDetails ? 'Masquer les détails' : 'Afficher les détails' }}
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <!-- Fermer la ligne et ouvrir une nouvelle ligne après chaque deux éléments
+      <div class="col-md-6" *ngIf="(i + 1) % 2 === 0 || i === mesbons.length - 1"></div>-->
+    </ng-container>
+  </div>
+
+</div>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h3 class="modal-title" id="modal-basic-titl">Ajouter un nouvel article</h3>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container" id="form">
+      <form [formGroup]="form" method="post" enctype="multipart/form-data">
+          <div class="col-12">
+            <div class="row">
+              <div class="col-12" style="margin: 15px; ">
+                <div class="input-field" appearance="outline" style="text-align:justify; font-size: 20px; height:30px">
+                  <span class="fa fa-user p-2" style="font-size: 20px; text-align:center; font-weight:bold; color:deeppink"  type="checkbox">Age Ciblé</span>
+                  <select formControlName="ageCible" id="groups" name="groups" style="width: 60%;">
+                    <optgroup label="Age">
+                      <option value="0-10 ans">0-10 ans</option>
+                      <option value="10-20 ans">10-20 ans</option>
+                      <option value="20-40 ans">20-40 ans</option>
+                      <option value="40-60 ans">40-60 ans</option>
+                      <option value="60plus ans">60 ans ou plus</option>
+                    </optgroup>
+                  </select>
+                </div>
+              </div>
+              <div class="col-12" style="margin: 15px; ">
+                <div class="input-field" appearance="outline" style="text-align:justify; font-size: 20px; height:30px">
+                  <span class="fa fa-user p-2" style="font-size: 20px; text-align:center; font-weight:bold; color:deeppink"  type="checkbox">Sexe Ciblé</span>
+                  <select formControlName="sexeCilbe" id="groups" name="groups" style="width: 60%;">
+                    <optgroup label="Sexe">
+                      <option value="H">M</option>
+                      <option value="F">F</option>
+                    </optgroup>
+                  </select>
+                </div>
+              </div>
+              <div class="col-12" >
+                <div class="input-field" appearance="outline" style="text-align:justify; font-size: 20px; height:30px">
+                  <span class="fa fa-user p-2" style="font-size: 20px; text-align:center; font-weight:bold">Image</span>
+                  <input formControlName="image" type="file" accept="*" (change)="uploadFile(avatarInput.files)" placeholder="Entrer l'image que vous voulez générer" #avatarInput>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button id="connect" type="submit"
+                    (click)="AjoutArticle()" class="btn btn-primary py-2 px-5">Confirmer</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</ng-template>
+

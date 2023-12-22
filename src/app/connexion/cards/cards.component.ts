@@ -1,6 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
-interface cards {
+interface cards1 {
+  image: string;
+  btn: string;
+}
+
+interface cards2 {
+  image: string;
+  btn: string;
+}
+
+interface cards3 {
   image: string;
   btn: string;
 }
@@ -16,23 +26,25 @@ export class CardsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  cards: cards [] = [
+  cards1: cards1 [] = [
     {
-      image: "assets/u2.webp",
+      image: "assets/Mention.png",
       btn: "warn",
-    },
+    }
+  ]
+
+  cards2: cards2 [] = [
     {
-      image: "assets/u3.webp",
+      image: "assets/Product.png",
       btn: "primary",
-    }/*,
+    }
+  ]
+
+  cards3: cards3 [] = [
     {
-      image: "assets/u4.webp",
+      image: "assets/Sales.png",
       btn: "accent",
-    },
-    {
-      image: "assets/images.png",
-      btn: "warn",
-    }*/
+    }
   ]
 
 }

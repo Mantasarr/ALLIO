@@ -1,9 +1,43 @@
-.card-body {
-  text-align: center;
-  color: deeppink;
-}
 
-.card {
-  color: blueviolet;
-  text-align: center;
-}
+
+    .card-body {
+      text-align: center;
+      color: deeppink;
+    }
+
+    .card {
+      color: blueviolet;
+      text-align: center;
+    }
+    .full-height {
+      height: 100%;
+    }
+
+    .full-width {
+      width: 100%;
+    }
+
+    .card-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .card {
+      border-radius: 1rem;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 1rem 0 0 1rem;
+    }
+
+    .card-body {
+      padding: 4rem 5rem;
+    }
+
+    .image-card {
+      margin-right: 200px; /* Ajoutez la marge entre l'image et le formulaire */
+    }
+

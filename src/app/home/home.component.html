@@ -1,22 +1,105 @@
-<mat-toolbar class="header ps-24 pe-24" style="background-color: rgb(149, 169, 176);" >
-  <div class="row" >
-        <div class="alert alert-info" style="right: auto; color:rgb(20, 17, 18)">
-            Vous n'avez pas encore de compte ?
-            <button   style="color: blueviolet;">Inscrivez-vous</button> maintenant !
-        </div>
-        <div class="alert alert-info" style="right: auto; color:rgb(20, 17, 18)">
-          Sinon
-          <button  style="color: blueviolet;">Se connecter</button>
-        </div>
-        </div>
-</mat-toolbar>
-
-<div >
-  <div class="row" style="display: flex; justify-content: center; align-items: center">
-    <div class="col-lg-8" >
+<div class="container-fluid">
+  <div class="content" style="background-color:white">
+    <div class="navbar bg-body-tertiary">
+      <div class="row-3" style="background-color: blueviolet;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-white">
+          <div class="container-fluid" style="background: radial-gradient(circle, rgb(241, 151, 190) 0%, rgb(51, 137, 235) 100%);">
+            <a class="navbar-brand" href="/home">
+              <img src="/assets/Allio.png" alt="ALLIO" width="120" height="80" style="margin-right: 15px;">
+            </a>
+            <a class="navbar-brand" routerLink="/home" style="font-weight: bold; color: white">HOME</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" routerLink="/bon-de-reduction" style="color:white; font-size:20px; font-weight: bold;">Bons</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" routerLink="/nouvelle-campagne" style="color:white; font-size:20px; font-weight: bold;">Promotions</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" routerLink="/prospectus" style="color:white; font-size:20px; font-weight: bold;">Prospectus</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" routerLink="/fidelite" style="color:white; font-size:20px; margin-right: 700px; font-weight: bold;">Programme de fidelite</a>
+                </li>
+              </ul>
+              <div class="ms-auto">
+                <button mat-button class="fs-16 pt-4 pb-4 ps-8 pe-8 text-light-muted d-flex align-items-center" [matMenuTriggerFor]="menu">
+                  <div class="d-flex align-items-center" style="font-size: 25px;">
+                    <img src="assets/person.png" class="rounded-circle" alt="" style="height: 50px; width:50px; margin:10px">
+                    <span class="fw-light ms-8 text-secondary">Hi,</span>
+                    <span class="fw-bold ms-8">Julia</span>
+                  </div>
+                </button>
+                <mat-menu #menu="matMenu" class="profile-dropdown">
+                  <div class="p-16 mb-4">
+                    <button mat-menu-item class="fs-16">Edit Profile</button>
+                    <button mat-menu-item class="fs-16">Mon compte</button>
+                    <button mat-menu-item class="fs-16">Changer le mot de passe</button>
+                    <button mat-menu-item class="fs-16">Paramètres</button>
+                  </div>
+                  <hr>
+                  <div class="p-16">
+                    <button mat-flat-button color="accent" class="w-100 text-white" style="background-color: deeppink;">Se déconnecter</button>
+                  </div>
+                </mat-menu>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="" style="background-color:white; margin:60px">
+        <span style="font-size: 20px; font-weight: bold; color:black;">En résumé, en choisissant LYCS ALLIO pour mettre vos articles en ligne, vous tirez parti d'une plateforme e-commerce flexible, accessible, et optimisée pour améliorer votre visibilité en ligne et augmenter votre impact commercial. N'hésitez pas à explorer toutes les fonctionnalités offertes et à nous contacter pour toute assistance supplémentaire. Profitez de nos services pour dynamiser votre présence en ligne et améliorer l'expérience de vos clients !</span>
+    </div>
+    <!--<div class="latest-two-articles">
+      <h2>Deux Derniers Articles</h2>
+      <ul>
+        <li *ngFor="let article of articles">
+          {{ article.title }}
+        </li>
+      </ul>
+    </div>-->
+    <div class="row-5">
       <app-cards></app-cards>
+      <router-outlet></router-outlet>
+      <div class="col-">
+      </div>
     </div>
   </div>
-</div>
+  <div class="footer">
+    <mat-card>
+      <mat-card-content style="background-color: black;">
+        <a class="navbar-brand" href="/home">
+          <img src="/assets/Allio.png" alt="ALLIO" width="120" height="80" style="margin-right: 15px; background-color:black">
+        </a>
+        <a style="color:white;">
+          <p style="font-weight: bold; color:deeppink; margin:15px; font-size:20px; margin-left: 800px">A propos</p><br/><br/>
 
+          <p style="font-size: 17px;">
+            Bienvenue chez LYCS ALLIO ! Nous sommes ravis de vous offrir la possibilité de mettre vos articles en ligne pour informer vos clients des offres du moment. Voici une explication plus détaillée de ce que cela signifie :
+            <br/><br/>
+
+            <strong style="color: deeppink;">Plateforme d'E-commerce :</strong> LYCS ALLIO propose une plateforme où vous, en tant que vendeur ou responsable marketing, pouvez publier vos articles en ligne. Cela crée une vitrine virtuelle où les clients peuvent parcourir et découvrir vos produits ou services.<br/><br/>
+
+            <strong style="color: deeppink;">Mise en Avant des Offres :</strong> Profitez de l'opportunité de mettre en avant vos offres spéciales, promotions, ou nouveautés. En mettant vos articles en ligne, vous permettez à vos clients de rester informés des dernières opportunités, ce qui peut contribuer à stimuler les ventes.<br/><br/>
+
+            <strong style="color: deeppink;">Accessibilité pour les Clients :</strong> En ayant une présence en ligne, vos clients peuvent accéder à vos produits ou services à tout moment, de n'importe où. Cela offre une commodité accrue pour les clients qui peuvent consulter vos offres à partir de leurs ordinateurs, tablettes, ou smartphones.<br/><br/>
+
+            <strong style="color: deeppink;">Interaction en Temps Réel :</strong> Mettre vos articles en ligne via LYCS ALLIO vous permet d'interagir avec vos clients en temps réel. Vous pouvez ajuster vos offres, répondre aux questions des clients et fournir des informations supplémentaires instantanément.<br/><br/>
+
+            <strong style="color: deeppink;">Facilité de Gestion :</strong> Notre plateforme est conçue pour être conviviale et vous permettre de gérer facilement vos articles en ligne. Vous pouvez ajouter de nouveaux produits, mettre à jour les informations, ajuster les prix, etc.<br/><br/>
+
+            <strong style="color: deeppink;">Optimisation Marketing :</strong> La mise en ligne de vos articles offre également des avantages marketing. Vous pouvez cibler vos clients de manière plus précise, analyser les tendances d'achat, et ajuster votre stratégie marketing en fonction des données recueillies.<br/><br/>
+
+            En résumé, en choisissant LYCS ALLIO pour mettre vos articles en ligne, vous tirez parti d'une plateforme e-commerce flexible, accessible, et optimisée pour améliorer votre visibilité en ligne et augmenter votre impact commercial. N'hésitez pas à explorer toutes les fonctionnalités offertes et à nous contacter pour toute assistance supplémentaire. Profitez de nos services pour dynamiser votre présence en ligne et améliorer l'expérience de vos clients !
+          </p>
+        </a>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
 

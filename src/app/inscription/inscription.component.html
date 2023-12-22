@@ -1,1 +1,125 @@
-<p>inscription works!</p>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<section class="vh-100 d-flex align-items-center" style="background: radial-gradient(circle, rgb(241, 151, 190) 0%, rgb(51, 137, 235) 100%);">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 mx-auto" *ngFor="let connexion2 of connexion2">
+        <img src="{{ connexion2.image }}" class="w-100" alt="" style="width:90px; height:800px; margin:40px">
+      </div>
+      <div class="col-md-9 mx-auto" >
+        <div class="" style="background-color:rgb(28, 65, 97);  width:870px; margin:150px; right:1500px">
+          <mat-card class="card container" style="background-color:rgb(28, 65, 97);">
+            <mat-card-content class="card-body">
+              <img src="assets/iPhone3.png" style="height: 90px; width:200px" class="mb-3">
+                <form [formGroup]="loginForm">
+                  <div class="form-group pt-3 mt-3" style="margin:15px" >
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="input-field" appearance="outline" style="text-align: left;">
+                          <label for="firstname" class="form-label" style="font-size: 20px; font-weight:bold; color :white; margin-right:140px">Prenom</label>
+                          <input formControlName="firstName" id="firstname" style="width:320px; font-size:21px" type="text" placeholder="Entrer votre nom complet">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="input-field" appearance="outline" style="text-align: left;">
+                          <label for="lastname" class="form-label" style="font-size: 20px; font-weight:bold; color :white; margin-right:140px">Nom</label>
+                          <input formControlName="lastName" id="lastname" style="width:320px; font-size:21px" type="text" placeholder="Entrer votre nom complet">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group pt-3 mt-3" style="margin:15px">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="input-field" appearance="outline" style="text-align: left;">
+                          <label for="groupe" class="form-label" style="font-size: 20px; font-weight:bold; color :white; margin-right:140px">Groupe</label>
+                          <input formControlName="groupe" id="groupe" style="width:320px; font-size:21px" type="text" placeholder="Entrer le nom du groupe">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="input-field" appearance="outline" style="text-align: left;">
+                          <label for="sousGroupe" class="form-label" style="font-size: 20px; font-weight:bold; color :white; margin-right:140px">Sous-Groupe</label>
+                          <input formControlName="sousGroupe" id="sousGroupe" style="width:320px; font-size:21px" type="text" placeholder="Entrer le nom du sous-groupe">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group pt-3 mt-3" style="margin:15px">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="input-field" appearance="outline" style="text-align: left;">
+                          <label for="phone" class="form-label" style="font-size: 20px; font-weight:bold; color :white; margin-right:140px">Numero</label>
+                          <input formControlName="phone" id="phone" style="width:320px; font-size:21px" type="tel" placeholder="Entrer votre numéro">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="input-field" appearance="outline" style="text-align: left; ">
+                          <label for="adresse" class="form-label" style="font-size: 20px; font-weight:bold; color :white; margin-right:140px">Adresse</label>
+                          <input formControlName="adresse" id="adresse" style="width:320px; font-size:21px" type="text" placeholder="Entrer votre adresse">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group pt-3 mt-3" style="margin:15px">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="input-field" appearance="outline" style="text-align: left;">
+                          <label for="name" class="form-label" style="font-size: 20px; font-weight:bold; color :white; margin-right:140px">Nom de le Compagnie</label>
+                          <input formControlName="name" id="name" style="width:320px; font-size:21px" type="text" placeholder="Entrer le nom de la compagnie">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="input-field" appearance="outline" style="text-align: left;">
+                          <label for="contactRef" class="form-label" style="font-size: 20px; font-weight:bold; color :white; margin-right:140px">Contact de Reference</label>
+                          <input formControlName="contactRef" id="contactRef" style="width:320px; font-size:21px" type="text" placeholder="Entrer le nom du contact de référence">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group pt-3 mt-3" style="margin:15px">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="input-field" appearance="outline" style="text-align: left;">
+                          <label for="ninea" class="form-label" style="font-size: 20px; font-weight:bold; color :white; margin-right:140px">Ninea</label>
+                          <input formControlName="ninea" id="ninea" style="width:320px; font-size:21px" type="text" placeholder="Entrer votre ninea">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="input-field" appearance="outline" style="text-align: left; ">
+                          <label for="email" class="form-label" style="font-size: 20px; font-weight:bold; color :white; margin-right:140px">Email</label>
+                          <input type="email" formControlName="email" id="email" style="width:320px; font-size:20px" placeholder="Entrer votre email">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group pt-3 mt-3" style="margin:15px">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="input-field text-start" appearance="outline">
+                          <label for="password" class="form-label" style="font-size: 20px; font-weight:bold; color :white; margin-right:140px">Password</label>
+                          <input type="password" formControlName="password" id="password" style="width:320px; font-size:21px" placeholder="Entrer votre mot de passe">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="input-field" appearance="outline" style="text-align: left; ">
+                          <label for="password" class="form-label" style="font-size: 20px; font-weight:bold; color :white; margin-right:100px">Password</label>
+                          <input type="password" formControlName="password" id="password" style="width:320px; font-size:20px" placeholder="Confirmer votre mot de passe">
+                          <span class="fa fa-eye-slash"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group pt-4">
+                    <button (click)="onInscription()" class="btn btn-primary btn-block" type="submit" style="width:250px; margin-left:250px" >S'inscrire</button>
+                  </div>
+                  <div class="form-group pt-4 text-center text-muted" style="font-weight:bold">
+                    Si vous avez déjà un compte veuillez vous connecter: <a id="forget" routerLink="/connexion">Se Connecter</a>
+                  </div>
+                </form>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

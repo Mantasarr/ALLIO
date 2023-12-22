@@ -1,0 +1,57 @@
+<!-- Cards -->
+<div class="row" >
+  <div class="col-lg-4" *ngFor="let card of cards1">
+    <mat-card class="overflow-hidden" style="width:300px; height:300px; margin:90px; right:50px; box-shadow: 10px 5px 5px rgb(222, 45, 121) ;">
+      <div>
+        <img src="{{ card.image }}" class="w-100" alt="" style="background: radial-gradient(circle, rgb(241, 151, 190) 0%, rgb(51, 137, 235) 100%);">
+      </div>
+      <mat-card-content>
+        <div>
+          <p class="fs-18 lh-lg fw-medium" style="font-weight: bold; text-align:center">
+            Bonne nouvelle 🥳, LYCS ALLIO est là!!!!
+          </p>
+          <p class="op-7">
+            Cliquez sur le bouton ci-dessous pour voir les articles disponibles 👇!!!!!!!
+          </p>
+          <button mat-flat-button color="{{card.btn}}" class="fw-normal mt-4" routerLink="/prospectus">Voir plus...</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-lg-4" *ngFor="let card of cards2">
+    <mat-card class="overflow-hidden" style="width:300px; height:300px; margin:90px; right:50px; box-shadow: 10px 5px 5px rgb(222, 45, 121) ; ">
+      <div>
+        <img src="{{ card.image }}" class="w-100" alt="" style="background: radial-gradient(circle, rgb(241, 151, 190) 0%, rgb(51, 137, 235) 100%);">
+      </div>
+      <mat-card-content>
+        <div>
+          <p class="fs-18 lh-lg fw-medium" style="font-weight: bold; text-align:center">
+            Bonne nouvelle 🥳, LYCS ALLIO est là!!!!
+          </p>
+          <p class="op-7">
+            Cliquez sur le bouton ci-dessous pour voir les bons de réduction disponibles 👇!!!!!!!
+          </p>
+          <button mat-flat-button color="{{card.btn}}" class="fw-normal mt-4" routerLink="/bon-de-reduction">Voir plus...</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-lg-4" *ngFor="let card of cards3">
+    <mat-card class="overflow-hidden" style="width:300px; height:300px; margin:90px; right:50px; box-shadow: 10px 5px 5px rgb(222, 45, 121) ;">
+      <div>
+        <img src="{{ card.image }}" class="w-100" alt="" style="background: radial-gradient(circle, rgb(241, 151, 190) 0%, rgb(51, 137, 235) 100%);">
+      </div>
+      <mat-card-content>
+        <div>
+          <p class="fs-18 lh-lg fw-medium" style="font-weight: bold; text-align:center">
+            Bonne nouvelle 🥳, LYCS ALLIO est là!!!!
+          </p>
+          <p class="op-7">
+            Cliquez sur le bouton ci-dessous pour voir les promotions déjà disponibles 👇!!!!!!!
+          </p>
+          <button mat-flat-button color="{{card.btn}}" class="fw-normal mt-4" routerLink="/nouvelle-campagne">Voir plus...</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -1,17 +1,47 @@
-<!-- Form Layout -->
-<div class="card">
-  <div class="card-body" style="width: 60%; padding: 15px;">
-    <h4 class="mb-32" style= "text-align: center; color:blueviolet">USER LOGIN</h4>
-    <form >
-      <mat-form-field class="w-100 fs-16" appearance="outline" style="text-align:center" >
-        <mat-label>Username</mat-label>
-        <input  name="username" type="text" placeholder="Entrer votre nom d'utilisateur">
-      </mat-form-field>
-      <mat-form-field class="w-100 fs-16" appearance="outline">
-        <mat-label>Password</mat-label>
-        <input  name="password" type="password" placeholder="Entrer votre mot de passe">
-      </mat-form-field>
-      <button mat-button class="btn btn-info fw-normal" type="submit">Se Connecter</button>
-    </form>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<section class="vh-100 d-flex align-items-center" style="background: radial-gradient(circle, rgb(241, 151, 190) 0%, rgb(51, 137, 235) 100%);">
+  <div class="container" >
+    <div class="row" >
+      <div class="col-md-6 mx-auto">
+        <!-- Left Card -->
+        <div class="card-container">
+          <mat-card class="card container" style="background-color:rgb(28, 65, 97);">
+            <mat-card-content class="card-body">
+              <img src="assets/iPhone3.png" style="height: 90px; width:230px" class="mb-3">
+                    <form [formGroup]="loginForm" >
+                      <div class="form-group pt-3 mt-3">
+                        <div class="input-field text-start" appearance="outline">
+                          <label for="email" class="form-label" style="font-size: 20px; font-weight:bold; color :white; margin-right:140px">Email</label>
+                          <input type="email" formControlName="email" id="email" style="width:300px; font-size:20px" placeholder="Entrer votre email">
+                        </div>
+                      </div>
+                      <div class="form-group pt-2">
+                        <div class="input-field text-start" appearance="outline">
+                          <label for="password" class="form-label" style="font-size: 20px; font-weight:bold; color :white; margin-right:100px">Password</label>
+                          <input type="password" formControlName="password" id="password" style="width:300px; font-size:20px" placeholder="Entrer votre mot de passe">
+                        </div>
+                      </div>
+                      <div class="form-group pt-4" style="margin:25px">
+                        <button (click)="onLogin()" type="button" class="btn btn-primary" style="background: radial-gradient(circle, rgb(241, 151, 190) 0%, rgb(51, 137, 235) 100%);">Se Connecter</button>
+                      </div>
+                      <div class="form-group pt-4 text-center text-muted" style="font-weight:bold;">
+                        Si vous n'avez pas de compte veuillez vous inscrire <a id="forget" routerLink="/inscription">S'inscrire</a>
+                      </div>
+                    </form>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+      <div class="col-md-6 mx-auto">
+        <!-- Right Card -->
+        <div class="card-container" *ngFor="let connexion1 of connexion1">
+          <mat-card class="card-container">
+            <mat-card-content>
+              <img src="{{ connexion1.image }}" class="w-100" alt="">
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>

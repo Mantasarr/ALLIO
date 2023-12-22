@@ -1,0 +1,156 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background: radial-gradient(circle, rgb(241, 151, 190) 0%, rgb(51, 137, 235) 100%);">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/bon-de-reduction" style="font-weight: bold; color:white">Bon de réduction</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit" style="color:white">Rechercher</button>
+    </form>
+  </div>
+</nav>
+
+<div class="form-group pt-4" style="background-color: white;">
+  <button (click)="creerbon(content)" class="btn btn-primary btn-block" type="submit" style="background: radial-gradient(circle, rgb(241, 151, 190) 0%, rgb(51, 137, 235) 100%); color:white">Créer un bon de réduction</button>
+  <button mat-button (click)="voirBons()" class="btn btn-secondary btn-block" type="button" style="background: radial-gradient(circle, rgb(241, 151, 190) 0%, rgb(51, 137, 235) 100%); float: right; color:white">Voir les bons générés</button>
+
+  <div class="row" style="margin:5%">
+    <ng-container *ngFor="let bon of mesbons; let i = index">
+      <div class="col-md-4">
+        <mat-card class="mb-3" style="background: radial-gradient(circle, rgb(241, 151, 190) 0%, rgb(51, 137, 235) 100%); height:80%; width:90%">
+          <mat-card-header>
+            <mat-card-title style="font-weight: bold; color:blueviolet">{{ bon.typeDeReduction }}</mat-card-title>
+            <mat-card-subtitle style="font-weight: bold;">Dates: {{ bon.dateDebut | date }} - {{ bon.dateFin | date }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content >
+            <p>{{ bon.image }}</p>
+            <div *ngIf="showDetails">
+              <p><strong>Code de Réduction:</strong> {{ bon.codeDeReduction }}</p>
+              <p><strong>Montant de Réduction:</strong> {{ bon.montantDeReduction }}</p>
+              <p><strong>Quantité de Bons:</strong> {{ bon.quantityBon }}</p>
+              <p><strong>Age Ciblé:</strong> {{ bon.ageCible }}</p>
+              <p><strong>Sexe Ciblé:</strong> {{ bon.sexeCible }}</p>
+              <p><strong>Localisation:</strong> {{ bon.localisation }}</p>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <!-- Ajoutez ces liens dans le fichier où vous configurez les styles de votre application -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+            <button mat-icon-button (click)="SuppBon(bon.id)">
+              <i class="fas fa-trash-alt"></i> <!-- Icône de suppression -->
+            </button>
+            <button mat-icon-button (click)="UpdateBon(bon.id)">
+              <i class="fas fa-edit"></i> <!-- Icône de modification -->
+            </button>
+            <button mat-button (click)="toggleDetails()" class="btn btn-secondary btn-block" type="button" style="background-color:fuchsia;">
+              {{ showDetails ? 'Masquer les détails' : 'Afficher les détails' }}
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <!-- Fermer la ligne et ouvrir une nouvelle ligne après chaque deux éléments
+      <div class="col-md-6" *ngIf="(i + 1) % 2 === 0 || i === mesbons.length - 1"></div>-->
+    </ng-container>
+  </div>
+
+</div>
+
+<ng-template #content let-modal style="height: 2500px; width:2000px">
+  <div class="modal-header" >
+    <h3 class="modal-title" id="modal-basic-title" style="font-weight: bold; color:blueviolet; font-size:200%;">Nouveau Bon De Réduction</h3>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="height: 700px;" >
+    <div class="container" id="form" >
+      <form [formGroup]="form" method="post" enctype="multipart/form-data" >
+          <div class="col-12">
+            <div class="row">
+              <div class="col-12" style="margin: 15px; " >
+                <div class="input-field" appearance="outline" style="text-align:justify; font-size: 20px; height:30px">
+                  <span class="fa fa-user p-2" style="font-size: 20px; text-align:center; font-weight:bold; color:deeppink">Début Date</span>
+                  <input formControlName="dateDebut" type="datetime-local" placeholder="Entrer la date de début" style="width: 60%;">
+              </div>
+              </div>
+              <div class="col-12" style="margin: 15px; ">
+                <div class="input-field" appearance="outline" style="text-align:justify; font-size: 20px; height:30px">
+                  <span class="fa fa-user p-2" style="font-size: 20px; text-align:center; font-weight:bold; color:deeppink">Fin Date</span>
+                  <input formControlName="dateFin" type="datetime-local" placeholder="Entrer la date de fin" style="width: 60%;">
+              </div>
+              </div>
+              <div class="col-12" style="margin: 15px; ">
+                <div class="input-field" appearance="outline" style="text-align:justify; font-size: 20px; height:30px">
+                  <span class="fa fa-user p-2" style="font-size: 20px; text-align:center; font-weight:bold; color:deeppink">Type de Réduction</span>
+                  <input formControlName="typeDeReduction" type="text" placeholder="Entrer le type de la réduction" style="width: 60%;">
+                </div>
+              </div>
+              <div class="col-12" style="margin: 15px; ">
+                <div class="input-field" appearance="outline" style="text-align:justify; font-size: 20px; height:30px">
+                  <span class="fa fa-user p-2" style="font-size: 20px; text-align:center; font-weight:bold; color:deeppink">Code de Réduction</span>
+                  <input formControlName="codeDeReduction" type="text" placeholder="Entrer le code de la réduction" style="width: 60%;">
+                </div>
+              </div>
+              <div class="col-12" style="margin: 15px; ">
+                <div class="input-field" appearance="outline" style="text-align:justify; font-size: 20px; height:30px">
+                  <span class="fa fa-user p-2" style="font-size: 20px; text-align:center; font-weight:bold; color:deeppink">Taux de Réduction</span>
+                  <input formControlName="montantDeReduction" type="number" placeholder="Entrer le montant de la réduction" style="width: 60%;">
+              </div>
+              </div>
+              <div class="col-12" style="margin: 15px; ">
+                <div class="input-field" appearance="outline" style="text-align:justify; font-size: 20px; height:30px">
+                  <span class="fa fa-user p-2" style="font-size: 20px; text-align:center; font-weight:bold; color:deeppink">Quantité de Bon</span>
+                  <input formControlName="quantityBon" type="number" placeholder="Entrer la quantité de bons que vous voulez générer" style="width: 60%;">
+                </div>
+              </div>
+              <div class="col-12" style="margin: 15px; ">
+                <div class="input-field" appearance="outline" style="text-align:justify; font-size: 20px; height:30px">
+                  <span class="fa fa-user p-2" style="font-size: 20px; text-align:center; font-weight:bold; color:deeppink"  type="checkbox">Age Ciblé</span>
+                  <select formControlName="ageCible" id="groups" name="groups" style="width: 60%;">
+                    <optgroup label="Age">
+                      <option value="0-10 ans">0-10 ans</option>
+                      <option value="10-20 ans">10-20 ans</option>
+                      <option value="20-40 ans">20-40 ans</option>
+                      <option value="40-60 ans">40-60 ans</option>
+                      <option value="60plus ans">60 ans ou plus</option>
+                    </optgroup>
+                  </select>
+                </div>
+              </div>
+              <div class="col-12" style="margin: 15px; ">
+                <div class="input-field" appearance="outline" style="text-align:justify; font-size: 20px; height:30px">
+                  <span class="fa fa-user p-2" style="font-size: 20px; text-align:center; font-weight:bold; color:deeppink"  type="checkbox">Sexe Ciblé</span>
+                  <select formControlName="sexeCible" id="groups" name="groups" style="width: 60%;">
+                    <optgroup label="Sexe">
+                      <option value="M">M</option>
+                      <option value="F">F</option>
+                    </optgroup>
+                  </select>
+                </div>
+              </div>
+              <div class="col-12" style="margin: 15px; ">
+                <div class="input-field" appearance="outline" style="text-align:justify; font-size: 20px; height:30px">
+                  <span class="fa fa-user p-2" style="font-size: 20px; text-align:center; font-weight:bold; color:deeppink">Localisation</span>
+                  <input formControlName="localisation" type="text" placeholder="Entrer votre localisation" style="width: 60%;">
+                </div>
+              </div>
+              <div class="col-12" >
+                <div class="input-field" appearance="outline" style="text-align:justify; font-size: 20px; height:30px">
+                  <span class="fa fa-user p-2" style="font-size: 20px; text-align:center; font-weight:bold">Image</span>
+                  <input formControlName="image" type="file" accept="*" (change)="uploadFile(avatarInput.files)" placeholder="Entrer l'image que vous voulez générer" #avatarInput>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button id="connect" type="submit" (click)="bonDeReduc()" class="btn btn-primary py-2 px-5">Confirmer</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</ng-template>
+
+
+
